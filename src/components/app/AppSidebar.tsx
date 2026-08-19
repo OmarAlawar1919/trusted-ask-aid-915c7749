@@ -6,7 +6,7 @@ import { useStore } from "@/lib/store";
 import logoAsset from "@/assets/teryaq-logo.jpg.asset.json";
 
 const nav = [
-  { to: "/", label: "Chat", icon: MessageSquareText },
+  { to: "/chat", label: "Chat", icon: MessageSquareText },
   { to: "/history", label: "History", icon: Clock },
   { to: "/saved", label: "Saved Evidence", icon: Bookmark },
 ] as const;
@@ -42,7 +42,7 @@ export function AppSidebar({ onNavigate }: { onNavigate?: () => void }) {
           onClick={() => {
             createConversation();
             onNavigate?.();
-            navigate({ to: "/" });
+            navigate({ to: "/chat" });
           }}
           className="flex w-full items-center gap-2 rounded-xl border border-sidebar-border px-4 py-3 text-sm font-medium transition-colors hover:bg-sidebar-accent"
         >
@@ -69,7 +69,7 @@ export function AppSidebar({ onNavigate }: { onNavigate?: () => void }) {
               >
                 <Icon className="h-4 w-4 shrink-0" aria-hidden />
                 <span className="min-w-0 flex-1 truncate">{label}</span>
-                {to === "/" && conversations.length > 0 && (
+                {to === "/chat" && conversations.length > 0 && (
                   <span className="rounded-md bg-sidebar-border px-1.5 text-xs">
                     {conversations.length}
                   </span>

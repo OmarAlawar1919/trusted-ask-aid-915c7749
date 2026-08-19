@@ -112,7 +112,7 @@ function HistoryPage() {
                   type="button"
                   onClick={() => {
                     setActiveId(conv.id);
-                    navigate({ to: "/" });
+                    navigate({ to: "/chat" });
                   }}
                   className="min-w-0 flex-1 text-left"
                 >
