@@ -202,7 +202,8 @@ function LandingPage() {
           <div className="rounded-2xl border border-sidebar-border bg-sidebar-primary/40">
             <div className="border-b border-sidebar-border p-6">
               <div className="flex flex-wrap items-center gap-4">
-                <EvidenceBadge status="Strong" score={0.87} />
+                <EvidenceBadge status="Strong" />
+                <span className="font-mono text-sm text-teal">87% Evidence Match</span>
                 <p className="text-xs text-navy-foreground/60">
                   Evidence-grounded · Source-traceable
                 </p>
