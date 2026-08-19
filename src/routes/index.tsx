@@ -10,7 +10,7 @@ import {
 } from "lucide-react";
 import { useTheme } from "@/lib/theme";
 import { EvidenceBadge } from "@/components/app/EvidenceBadge";
-import logoAsset from "@/assets/teryaq-logo.jpg.asset.json";
+import logoAsset from "@/assets/teryaq-logo-mark.jpg.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({

@@ -4,7 +4,7 @@ import { z } from "zod";
 import { Loader2 } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { lovable } from "@/integrations/lovable/index";
-import logoAsset from "@/assets/teryaq-logo.jpg.asset.json";
+import logoAsset from "@/assets/teryaq-logo-mark.jpg.asset.json";
 
 const searchSchema = z.object({
   mode: z.enum(["signin", "signup"]).catch("signin"),
