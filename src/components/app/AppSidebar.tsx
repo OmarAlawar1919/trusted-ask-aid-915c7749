@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils";
 import { useTheme } from "@/lib/theme";
 import { useStore } from "@/lib/store";
 import { supabase } from "@/integrations/supabase/client";
-import logoAsset from "@/assets/teryaq-logo.jpg.asset.json";
+import logoAsset from "@/assets/teryaq-logo-mark.jpg.asset.json";
 
 const nav = [
   { to: "/chat", label: "Chat", icon: MessageSquareText },
