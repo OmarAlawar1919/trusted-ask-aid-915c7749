@@ -4,7 +4,7 @@ import { AppShell } from "@/components/app/AppShell";
 import { AnswerCard } from "@/components/app/AnswerCard";
 import { formatRelative, useStore } from "@/lib/store";
 
-export const Route = createFileRoute("/saved")({
+export const Route = createFileRoute("/_authenticated/saved")({
   head: () => ({
     meta: [
       { title: "Saved Evidence | TERYaq" },

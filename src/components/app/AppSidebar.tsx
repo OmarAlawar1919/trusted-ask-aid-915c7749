@@ -1,12 +1,14 @@
 import { Link, useNavigate, useRouterState } from "@tanstack/react-router";
-import { Bookmark, Clock, MessageSquareText, Moon, Plus, Sun } from "lucide-react";
+import { useQueryClient } from "@tanstack/react-query";
+import { Bookmark, Clock, LogOut, MessageSquareText, Moon, Plus, Sun } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useTheme } from "@/lib/theme";
 import { useStore } from "@/lib/store";
+import { supabase } from "@/integrations/supabase/client";
 import logoAsset from "@/assets/teryaq-logo.jpg.asset.json";
 
 const nav = [
-  { to: "/", label: "Chat", icon: MessageSquareText },
+  { to: "/chat", label: "Chat", icon: MessageSquareText },
   { to: "/history", label: "History", icon: Clock },
   { to: "/saved", label: "Saved Evidence", icon: Bookmark },
 ] as const;
@@ -16,6 +18,14 @@ export function AppSidebar({ onNavigate }: { onNavigate?: () => void }) {
   const { theme, toggle } = useTheme();
   const { conversations, createConversation } = useStore();
   const navigate = useNavigate();
+  const queryClient = useQueryClient();
+
+  async function signOut() {
+    await queryClient.cancelQueries();
+    queryClient.clear();
+    await supabase.auth.signOut();
+    navigate({ to: "/auth", search: { mode: "signin" }, replace: true });
+  }
 
   return (
     <nav
@@ -42,7 +52,7 @@ export function AppSidebar({ onNavigate }: { onNavigate?: () => void }) {
           onClick={() => {
             createConversation();
             onNavigate?.();
-            navigate({ to: "/" });
+            navigate({ to: "/chat" });
           }}
           className="flex w-full items-center gap-2 rounded-xl border border-sidebar-border px-4 py-3 text-sm font-medium transition-colors hover:bg-sidebar-accent"
         >
@@ -69,7 +79,7 @@ export function AppSidebar({ onNavigate }: { onNavigate?: () => void }) {
               >
                 <Icon className="h-4 w-4 shrink-0" aria-hidden />
                 <span className="min-w-0 flex-1 truncate">{label}</span>
-                {to === "/" && conversations.length > 0 && (
+                {to === "/chat" && conversations.length > 0 && (
                   <span className="rounded-md bg-sidebar-border px-1.5 text-xs">
                     {conversations.length}
                   </span>
@@ -113,6 +123,15 @@ export function AppSidebar({ onNavigate }: { onNavigate?: () => void }) {
         <p className="text-[11px] leading-relaxed text-navy-muted/70">
           Educational information only — not a diagnosis or medical advice.
         </p>
+
+        <button
+          type="button"
+          onClick={signOut}
+          className="flex w-full items-center gap-2 rounded-lg border border-sidebar-border px-3 py-2 text-xs font-medium transition-colors hover:bg-sidebar-accent"
+        >
+          <LogOut className="h-3.5 w-3.5" aria-hidden />
+          Sign out
+        </button>
       </div>
     </nav>
   );
