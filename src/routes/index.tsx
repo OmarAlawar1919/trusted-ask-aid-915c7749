@@ -276,7 +276,7 @@ function LandingPage() {
         <h2 className="mt-4 font-display text-3xl leading-tight font-bold tracking-tight sm:text-4xl">
           Built around evidence, not guesswork.
         </h2>
-        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {features.map(({ icon: Icon, title, body }) => (
             <article
               key={title}
