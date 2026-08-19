@@ -6,7 +6,7 @@ import { formatRelative, useStore } from "@/lib/store";
 import type { EvidenceStatus } from "@/lib/types";
 import { EvidenceBadge } from "@/components/app/EvidenceBadge";
 
-export const Route = createFileRoute("/history")({
+export const Route = createFileRoute("/_authenticated/history")({
   head: () => ({
     meta: [
       { title: "Conversation History | TERYaq" },

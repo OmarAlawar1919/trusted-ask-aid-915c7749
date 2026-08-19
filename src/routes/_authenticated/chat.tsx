@@ -9,7 +9,7 @@ import { useStore, uid } from "@/lib/store";
 import { askQuestion } from "@/services/chatApi";
 import type { ChatMessage, Conversation } from "@/lib/types";
 
-export const Route = createFileRoute("/")({
+export const Route = createFileRoute("/_authenticated/chat")({
   head: () => ({
     meta: [
       { title: "Clinical Evidence Assistant | TERYaq" },
